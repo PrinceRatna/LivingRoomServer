@@ -1,13 +1,11 @@
 
-// FcpTC1c1CnK5wWAB
 
 const express=require('express');
 const cors=require('cors');
 require('dotenv').config();
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const axios=require('axios');
-//port 
-const port=5000;
+
 
 
     //express app initialization
@@ -18,13 +16,14 @@ app.use(express.json());
     //...................middleware........................
 app.use(cors());
 
+//port 
+const port=process.env.PORT||5000;
 
 
 
 
 
-
-const uri = "mongodb+srv://Live:FcpTC1c1CnK5wWAB@cluster2.v5bzpns.mongodb.net/?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASSWORD}@cluster2.v5bzpns.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
